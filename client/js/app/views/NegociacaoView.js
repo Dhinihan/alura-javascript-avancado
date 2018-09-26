@@ -1,26 +1,10 @@
-class NegociacaoView {
-
-    /**
-     *
-     * @param {HTMLElement} elemento
-     */
-    constructor(elemento) {
-        this._elemento = elemento;
-    }
+class NegociacaoView extends View {
 
     /**
      *
      * @param {Array} lista
      */
-    update(lista) {
-        this._elemento.innerHTML = this._template(lista);
-    }
-
-    /**
-     *
-     * @param {Array} lista
-     */
-    _template(lista) {
+    template(lista) {
         return `
         <table class="table table-hover table-bordered">
             <thead>
