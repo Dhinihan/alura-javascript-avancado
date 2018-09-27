@@ -1,13 +1,10 @@
 class Mensagem {
 
   /**
-   *
-   * @param {function} callback
    * @param {string} texto
    */
-  constructor(callback, texto = '') {
+  constructor(texto = '') {
     this._texto = texto;
-    this._callback = callback;
   }
 
   /**
@@ -22,6 +19,5 @@ class Mensagem {
    */
   set texto (texto) {
     this._texto = texto;
-    this._callback(this);
   }
 }
