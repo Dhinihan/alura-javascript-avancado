@@ -2,10 +2,10 @@ class MensagemView extends View {
 
     /**
      *
-     * @param {string} texto
+     * @param {Mensagem} model
      */
-    template(texto) {
-        if (!texto) return '<p></p>';
-        return `<p class="alert alert-info">${texto}</p>`;
+    template(model) {
+        if (!model.texto) return '<p></p>';
+        return `<p class="alert alert-info">${model.texto}</p>`;
     }
 }
