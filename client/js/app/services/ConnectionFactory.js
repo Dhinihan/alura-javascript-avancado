@@ -13,6 +13,9 @@ var ConnectionFactory = (function () {
       throw new Error('ConnectionFactory não pode ser instanciada');
     }
 
+    /**
+     * @returns {Promise<IDBDatabase>}
+     */
     static getConnection() {
 
       return new Promise((resolve, reject) => {
@@ -25,7 +28,7 @@ var ConnectionFactory = (function () {
           if (!connection) {
             connection = evento.target.result;
             close = connection.close.bind(connection);
-            connection.close = function(){};
+            connection.close = function () { };
           }
           resolve(connection);
         };
@@ -49,9 +52,5 @@ var ConnectionFactory = (function () {
         conn.createObjectStore(store, { autoIncrement: true });
       });
     }
-
-
   };
-
-
 })();
