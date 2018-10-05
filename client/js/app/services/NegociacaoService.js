@@ -6,6 +6,40 @@ class NegociacaoService {
 
   /**
    *
+   * @param {Negociacao} negociacao
+   * @returns {Promise<string>}
+   */
+  cadastra(negociacao) {
+    return ConnectionFactory.getConnection()
+      .then(conn => new NegociacaoDao(conn))
+      .then(dao => dao.adiciona(negociacao))
+      .then(() => 'Negociação adicionada com sucesso')
+      .catch(error => this._mensagem.texto = error);
+  }
+
+  /**
+   * @returns {Promise<Negociacao[]>}
+   */
+  lista() {
+    return ConnectionFactory.getConnection()
+      .then(conn => new NegociacaoDao(conn))
+      .then(dao => dao.listaTodos());
+  }
+
+  /**
+   *
+   * @param {Negociacao[]} lista
+   * @returns {Promise<string>}
+   */
+  apaga(lista) {
+    return ConnectionFactory.getConnection()
+      .then(conn => new NegociacaoDao(conn))
+      .then(dao => dao.apagaTodos())
+      .then(() => "Negociações apagadas com sucesso");
+  }
+
+  /**
+   *
    * @param {string} url
    * @param {string} erro
    */
@@ -42,5 +76,13 @@ class NegociacaoService {
     return this._getNegociacoes(
       'negociacoes/retrasada',
       'Não foi possível importar as negociações da semana retrasada.');
+  }
+
+  importaNegociacoes() {
+    return Promise.all([
+      this.getNegociacoesDaSemana(),
+      this.getNegociacoesDaSemanaAnterior(),
+      this.getNegociacoesDaSemanaRetrasada(),
+    ]).then(importacoes => importacoes.reduce((arrayAchatado, array) => arrayAchatado.concat(array), []));
   }
 }

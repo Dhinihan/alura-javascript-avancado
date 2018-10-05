@@ -5,7 +5,6 @@ class NegociacaoDao {
    * @param {IDBDatabase} connection
    */
   constructor(connection) {
-    console.log('connection', connection);
     this._connection = connection;
     this._store = 'negociacoes';
   }
