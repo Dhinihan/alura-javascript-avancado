@@ -1,5 +1,6 @@
-class Bind {
+import { ProxyFactory } from '../services/ProxyFactory';
 
+export class Bind {
   /**
    *
    * @param {any} model

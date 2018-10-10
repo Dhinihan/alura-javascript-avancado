@@ -1,4 +1,7 @@
-class MensagemView extends View {
+import {View} from './View';
+import { Mensagem } from '../models/Mensagem';
+
+export class MensagemView extends View {
 
     /**
      *

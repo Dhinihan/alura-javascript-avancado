@@ -1,4 +1,8 @@
-class NegociacaoView extends View {
+import { View } from './View';
+import { ListaNegociacoes } from '../models/ListaNegociacoes';
+import { DataHelper } from '../helpers/DataHelper';
+
+export class NegociacaoView extends View {
 
     /**
      *

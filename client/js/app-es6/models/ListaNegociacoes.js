@@ -1,4 +1,6 @@
-class ListaNegociacoes {
+import { Negociacao } from './Negociacao';
+
+export class ListaNegociacoes {
 
   /**
    *
